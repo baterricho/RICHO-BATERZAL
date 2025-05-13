@@ -40,28 +40,34 @@
       position: absolute;
       width: 100%;
     }
+    @media (min-width: 768px) {
+      aside#sidebar {
+        display: flex !important;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="flex min-h-screen">
+  <div class="flex min-h-screen flex-col md:flex-row">
     <!-- Sidebar -->
     <aside
-      class="bg-white w-56 flex flex-col items-center py-8 space-y-8 shadow-lg hidden"
+      class="bg-white w-full md:w-56 flex flex-row md:flex-col items-center md:items-start py-4 md:py-8 space-x-4 md:space-x-0 md:space-y-8 shadow-lg hidden md:flex"
       id="sidebar"
+      aria-label="Sidebar Navigation"
     >
-      <div class="flex flex-col items-center space-y-2">
+      <div class="flex items-center md:flex-col md:items-center space-x-3 md:space-x-0 md:space-y-2 px-4 md:px-0">
         <img
           alt="Barangay official seal with circular shape and colorful emblem"
-          class="w-14 h-14"
+          class="w-10 h-10 md:w-14 md:h-14"
           height="56"
           src="https://storage.googleapis.com/a1aa/image/1ab51a88-3dd4-4877-9fe5-463e73672faf.jpg"
           width="56"
         />
-        <span class="text-lg font-semibold text-gray-800">Dashboard</span>
+        <span class="text-lg font-semibold text-gray-800 hidden md:block">Dashboard</span>
       </div>
-      <nav class="w-full px-6 space-y-3">
+      <nav class="flex-1 w-full px-4 md:px-6 space-x-2 md:space-x-0 md:space-y-3 flex md:flex-col overflow-x-auto md:overflow-visible" role="navigation" aria-label="Main Navigation">
         <button
-          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition"
+          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition whitespace-nowrap"
           id="addPatientBtn"
           type="button"
           aria-label="Add Patient"
@@ -70,7 +76,7 @@
           <span>Add Patient</span>
         </button>
         <button
-          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition"
+          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition whitespace-nowrap"
           id="scheduleAppointmentBtn"
           type="button"
           aria-label="Schedule Appointment"
@@ -79,7 +85,7 @@
           <span>Schedule Appointment</span>
         </button>
         <button
-          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition"
+          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition whitespace-nowrap"
           id="viewHealthRecordsBtn"
           type="button"
           aria-label="View Health Records"
@@ -88,7 +94,7 @@
           <span>View Health Records</span>
         </button>
         <button
-          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition"
+          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition whitespace-nowrap"
           id="generateReportsBtn"
           type="button"
           aria-label="Generate Reports"
@@ -97,27 +103,18 @@
           <span>Generate Reports</span>
         </button>
         <button
-          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium mt-6 transition"
-          id="domainBtn"
-          type="button"
-          aria-label="Add Domain"
-        >
-          <i class="fas fa-globe w-5"></i>
-          <span>Add Domain</span>
-        </button>
-        <button
-          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition"
+          class="w-full text-left text-gray-700 hover:bg-blue-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium mt-6 transition whitespace-nowrap"
           id="adminBtn"
           type="button"
-          aria-label="Add Admin"
+          aria-label="Admin"
         >
           <i class="fas fa-user-shield w-5"></i>
-          <span>Add Admin</span>
+          <span>Admin</span>
         </button>
       </nav>
-      <div class="w-full px-6 mt-auto">
+      <div class="w-full px-4 md:px-6 mt-auto">
         <button
-          class="w-full text-left text-gray-700 hover:bg-red-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition"
+          class="w-full text-left text-gray-700 hover:bg-red-600 hover:text-white rounded-md px-4 py-3 flex items-center space-x-3 font-medium transition whitespace-nowrap"
           id="logoutBtn"
           type="button"
           aria-label="Logout"
@@ -128,7 +125,7 @@
       </div>
     </aside>
     <!-- Main content -->
-    <main class="flex-1 p-10 max-w-5xl mx-auto w-full">
+    <main class="flex-1 p-6 md:p-10 max-w-5xl mx-auto w-full">
       <h1
         class="text-3xl font-extrabold text-center text-gray-900 mb-1"
         id="pageTitle"
@@ -162,7 +159,7 @@
               name="loginEmail"
               type="email"
               required
-              placeholder=""
+              placeholder="you@example.com"
               aria-required="true"
               aria-label="Email address"
               class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
@@ -334,64 +331,15 @@
         </div>
       </section>
 
-      <!-- Add Domain Section -->
-      <section
-        class="max-w-3xl mx-auto mt-8 bg-white rounded-lg shadow p-6 hidden"
-        id="domainSection"
-        role="region"
-        aria-label="Add Domain Section"
-      >
-        <h2 class="text-xl font-bold mb-4 text-center text-gray-800">
-          Add New Domain
-        </h2>
-        <form id="domainForm" class="space-y-4">
-          <div>
-            <label
-              class="block text-sm font-medium mb-1 text-gray-700"
-              for="domainName"
-              >Domain Name</label
-            >
-            <input
-              class="w-full border border-gray-400 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-              id="domainName"
-              name="domainName"
-              placeholder="Enter domain name"
-              required
-              type="text"
-              aria-required="true"
-            />
-          </div>
-          <button
-            class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-blue-700 transition"
-            type="submit"
-            aria-label="Add Domain"
-          >
-            Add Domain
-          </button>
-        </form>
-        <div
-          class="mt-4 max-h-48 overflow-y-auto border border-gray-200 rounded p-3"
-          tabindex="0"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <h3 class="font-semibold mb-2 text-gray-700">Domains List:</h3>
-          <ul
-            class="list-disc list-inside text-sm text-gray-600 scrollable"
-            id="domainList"
-          ></ul>
-        </div>
-      </section>
-
-      <!-- Add Admin Section -->
+      <!-- Admin Section -->
       <section
         class="max-w-3xl mx-auto mt-8 bg-white rounded-lg shadow p-6 hidden"
         id="adminSection"
         role="region"
-        aria-label="Add Admin Section"
+        aria-label="Admin Section"
       >
         <h2 class="text-xl font-bold mb-4 text-center text-gray-800">
-          Add New Admin
+          Admin
         </h2>
         <form id="adminForm" class="space-y-4">
           <div>
@@ -401,13 +349,13 @@
               >Admin Name</label
             >
             <input
-              class="w-full border border-gray-400 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              class="w-full border border-gray-400 rounded px-3 py-2 text-sm bg-gray-100 cursor-not-allowed"
               id="adminName"
               name="adminName"
-              placeholder="Enter admin name"
-              required
               type="text"
               aria-required="true"
+              readonly
+              tabindex="-1"
             />
           </div>
           <div>
@@ -417,22 +365,15 @@
               >Admin Email</label
             >
             <input
-              class="w-full border border-gray-400 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+              class="w-full border border-gray-400 rounded px-3 py-2 text-sm bg-gray-100 cursor-not-allowed"
               id="adminEmail"
               name="adminEmail"
-              placeholder="Enter admin email"
-              required
               type="email"
               aria-required="true"
+              readonly
+              tabindex="-1"
             />
           </div>
-          <button
-            class="bg-blue-600 text-white px-4 py-2 rounded text-sm font-semibold hover:bg-blue-700 transition"
-            type="submit"
-            aria-label="Add Admin"
-          >
-            Add Admin
-          </button>
         </form>
         <div
           class="mt-4 max-h-48 overflow-y-auto border border-gray-200 rounded p-3"
@@ -457,7 +398,6 @@
     const scheduleAppointmentBtn = document.getElementById("scheduleAppointmentBtn");
     const viewHealthRecordsBtn = document.getElementById("viewHealthRecordsBtn");
     const generateReportsBtn = document.getElementById("generateReportsBtn");
-    const domainBtn = document.getElementById("domainBtn");
     const adminBtn = document.getElementById("adminBtn");
     const logoutBtn = document.getElementById("logoutBtn");
 
@@ -465,7 +405,6 @@
     const scheduleAppointmentSection = document.getElementById("scheduleAppointmentSection");
     const viewHealthRecordsSection = document.getElementById("viewHealthRecordsSection");
     const generateReportsSection = document.getElementById("generateReportsSection");
-    const domainSection = document.getElementById("domainSection");
     const adminSection = document.getElementById("adminSection");
     const loginSection = document.getElementById("loginSection");
 
@@ -475,7 +414,6 @@
     // Data storage
     let patients = [];
     let appointments = [];
-    let domains = [];
     let admins = [];
 
     // Utility to hide all main sections except login
@@ -484,7 +422,6 @@
       scheduleAppointmentSection.classList.add("hidden");
       viewHealthRecordsSection.classList.add("hidden");
       generateReportsSection.classList.add("hidden");
-      domainSection.classList.add("hidden");
       adminSection.classList.add("hidden");
       loginSection.classList.add("hidden");
     }
@@ -536,16 +473,19 @@
       updateReports();
     }
 
-    // Show Add Domain Section
-    function showAddDomain() {
-      showDashboardSection(domainSection, "Add New Domain", "Manage domains for the system.");
-      updateDomainList();
-    }
-
-    // Show Add Admin Section
-    function showAddAdmin() {
-      showDashboardSection(adminSection, "Add New Admin", "Manage admin users for the system.");
+    // Show Admin Section
+    function showAdmin() {
+      showDashboardSection(adminSection, "Admin", "Manage admin users for the system.");
       updateAdminList();
+      // Fill the readonly inputs with logged-in user info if available
+      if (admins.length > 0) {
+        const lastAdmin = admins[admins.length - 1];
+        document.getElementById("adminName").value = lastAdmin.name;
+        document.getElementById("adminEmail").value = lastAdmin.email;
+      } else {
+        document.getElementById("adminName").value = "";
+        document.getElementById("adminEmail").value = "";
+      }
     }
 
     // Event listeners for sidebar buttons
@@ -553,8 +493,7 @@
     scheduleAppointmentBtn.addEventListener("click", showScheduleAppointment);
     viewHealthRecordsBtn.addEventListener("click", showViewHealthRecords);
     generateReportsBtn.addEventListener("click", showGenerateReports);
-    domainBtn.addEventListener("click", showAddDomain);
-    adminBtn.addEventListener("click", showAddAdmin);
+    adminBtn.addEventListener("click", showAdmin);
     logoutBtn.addEventListener("click", () => {
       showLogin();
     });
@@ -654,48 +593,8 @@
       reportTodaysAppointments.textContent = todaysAppts.length;
     }
 
-    // Add Domain Form
-    const domainForm = document.getElementById("domainForm");
-    const domainList = document.getElementById("domainList");
-    domainForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const domainNameInput = document.getElementById("domainName");
-      const domainName = domainNameInput.value.trim();
-      if (domainName && !domains.includes(domainName)) {
-        domains.push(domainName);
-        updateDomainList();
-        domainNameInput.value = "";
-      } else if (domains.includes(domainName)) {
-        alert("Domain already exists.");
-      }
-    });
-    function updateDomainList() {
-      domainList.innerHTML = "";
-      domains.forEach((domain) => {
-        const li = document.createElement("li");
-        li.textContent = domain;
-        domainList.appendChild(li);
-      });
-    }
-
-    // Add Admin Form
-    const adminForm = document.getElementById("adminForm");
+    // Admin List
     const adminList = document.getElementById("adminList");
-    adminForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const adminNameInput = document.getElementById("adminName");
-      const adminEmailInput = document.getElementById("adminEmail");
-      const adminName = adminNameInput.value.trim();
-      const adminEmail = adminEmailInput.value.trim();
-      if (adminName && adminEmail && !admins.some((a) => a.email === adminEmail)) {
-        admins.push({ name: adminName, email: adminEmail });
-        updateAdminList();
-        adminNameInput.value = "";
-        adminEmailInput.value = "";
-      } else if (admins.some((a) => a.email === adminEmail)) {
-        alert("Admin with this email already exists.");
-      }
-    });
     function updateAdminList() {
       adminList.innerHTML = "";
       admins.forEach((admin) => {
@@ -725,11 +624,7 @@
       e.preventDefault();
       const email = loginEmailInput.value.trim();
       if (email) {
-        // Record email in domains and admins if not already present
-        if (!domains.includes(email)) {
-          domains.push(email);
-          updateDomainList();
-        }
+        // Record email in admins if not already present
         if (!admins.some((a) => a.email === email)) {
           admins.push({ name: "Logged-in User", email: email });
           updateAdminList();
