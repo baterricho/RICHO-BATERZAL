@@ -339,49 +339,14 @@
         aria-label="Admin Section"
       >
         <h2 class="text-xl font-bold mb-4 text-center text-gray-800">
-          Admin
+          Admins List
         </h2>
-        <form id="adminForm" class="space-y-4">
-          <div>
-            <label
-              class="block text-sm font-medium mb-1 text-gray-700"
-              for="adminName"
-              >Admin Name</label
-            >
-            <input
-              class="w-full border border-gray-400 rounded px-3 py-2 text-sm bg-gray-100 cursor-not-allowed"
-              id="adminName"
-              name="adminName"
-              type="text"
-              aria-required="true"
-              readonly
-              tabindex="-1"
-            />
-          </div>
-          <div>
-            <label
-              class="block text-sm font-medium mb-1 text-gray-700"
-              for="adminEmail"
-              >Admin Email</label
-            >
-            <input
-              class="w-full border border-gray-400 rounded px-3 py-2 text-sm bg-gray-100 cursor-not-allowed"
-              id="adminEmail"
-              name="adminEmail"
-              type="email"
-              aria-required="true"
-              readonly
-              tabindex="-1"
-            />
-          </div>
-        </form>
         <div
-          class="mt-4 max-h-48 overflow-y-auto border border-gray-200 rounded p-3"
+          class="max-h-48 overflow-y-auto border border-gray-200 rounded p-3"
           tabindex="0"
           aria-live="polite"
           aria-atomic="true"
         >
-          <h3 class="font-semibold mb-2 text-gray-700">Admins List:</h3>
           <ul
             class="list-disc list-inside text-sm text-gray-600 scrollable"
             id="adminList"
@@ -475,17 +440,8 @@
 
     // Show Admin Section
     function showAdmin() {
-      showDashboardSection(adminSection, "Admin", "Manage admin users for the system.");
+      showDashboardSection(adminSection, "Admins List", "Manage admin users for the system.");
       updateAdminList();
-      // Fill the readonly inputs with logged-in user info if available
-      if (admins.length > 0) {
-        const lastAdmin = admins[admins.length - 1];
-        document.getElementById("adminName").value = lastAdmin.name;
-        document.getElementById("adminEmail").value = lastAdmin.email;
-      } else {
-        document.getElementById("adminName").value = "";
-        document.getElementById("adminEmail").value = "";
-      }
     }
 
     // Event listeners for sidebar buttons
